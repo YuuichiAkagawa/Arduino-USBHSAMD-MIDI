@@ -176,3 +176,7 @@ END_USBHSAMDMIDI_NAMESPACE
 
 #define USBHSAMDMIDI_CREATE_DEFAULT_INSTANCE(USBH)  \
   USBHSAMDMIDI_CREATE_INSTANCE(USBH, 0, MIDI)
+
+#define USBHSAMDMIDI_CREATE_CUSTOM_INSTANCE(USBH, CableNr, Name, Settings)  \
+  USBHSAMDMIDI_NAMESPACE::usbhsamdMidiTransport __usbhsamd##Name(USBH, CableNr);\
+  MIDI_NAMESPACE::MidiInterface<USBHSAMDMIDI_NAMESPACE::usbhsamdMidiTransport, Settings> Name((USBHSAMDMIDI_NAMESPACE::usbhsamdMidiTransport&)__usbhsamd##Name);

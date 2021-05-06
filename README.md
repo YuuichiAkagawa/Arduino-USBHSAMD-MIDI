@@ -1,5 +1,6 @@
 # Arduino USB Host Library SAMD MIDI Transport
-Pre-release of USB Host Library SAMD MIDI transport layer for the [FortySevenEffects Arduino MIDI Library](https://github.com/FortySevenEffects/arduino_midi_library) and uses the underlying [USB Host Library SAMD](https://github.com/gdsports/USB_Host_Library_SAMD).Therefore, it depends on the behavior of the USB Host library SAMD.
+Pre-release of USB Host Library SAMD MIDI transport layer for the [FortySevenEffects Arduino MIDI Library](https://github.com/FortySevenEffects/arduino_midi_library) and uses the underlying [USB Host Library SAMD](https://github.com/gdsports/USB_Host_Library_SAMD).  
+Therefore, it depends on the behavior of the USB Host library SAMD.  
 This library is based on the [Arduino-USBMIDI](https://github.com/lathoub/Arduino-USBMIDI).
 
 __This libraries is EXTREMELY ALPHA!__
@@ -33,6 +34,19 @@ will create a instance named `MIDI` (transport instance named `__usbhsamdMIDI`) 
 USBHSAMDMIDI_CREATE_INSTANCE(&UsbH, 4, MIDI);
 ```
 will create a instance named `MIDI` (transport instance named `__usbhsamdMIDI`) and is connected to cable number 4.
+
+### Custom Settings
+```cpp
+#include <USBHSAMD-MIDI.h>
+...
+struct MySettings : public midi::DefaultSettings
+{
+    static const unsigned SysExMaxSize = 512; // Accept SysEx messages up to 512 bytes long.
+};
+USB Usb;
+USBHSAMDMIDI_CREATE_CUSTOM_INSTANCE(&UsbH, 0, MIDI, MySettings);
+```
+will create a instance named `MIDI` (transport instance named `__usbhsamdMIDI`) and change the maximum size of SysEx messages to 512 bytes.
 
 ### Advanced
 ```cpp
