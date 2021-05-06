@@ -1,5 +1,5 @@
 # Arduino USB Host Library SAMD MIDI Transport
-Pre-release of USB Host Library SAMD MIDI transport layer for the [FortySevenEffects Arduino MIDI Library](https://github.com/FortySevenEffects/arduino_midi_library) and uses the underlying [USB Host Library SAMD](https://github.com/gdsports/USB_Host_Library_SAMD).
+Pre-release of USB Host Library SAMD MIDI transport layer for the [FortySevenEffects Arduino MIDI Library](https://github.com/FortySevenEffects/arduino_midi_library) and uses the underlying [USB Host Library SAMD](https://github.com/gdsports/USB_Host_Library_SAMD).Therefore, it depends on the behavior of the USB Host library SAMD.
 This library is based on the [Arduino-USBMIDI](https://github.com/lathoub/Arduino-USBMIDI).
 
 __This libraries is EXTREMELY ALPHA!__
@@ -17,7 +17,7 @@ USBHSAMDMIDI_CREATE_DEFAULT_INSTANCE(&UsbH);
 ...
 void setup()
 {
-   MIDI.begin();
+   MIDI.begin(1);
 ...
 void loop()
 {
